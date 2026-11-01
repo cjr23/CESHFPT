@@ -2286,7 +2286,7 @@ textarea:focus {
 .back-to-top {
   position: fixed;
   right: max(20px, env(safe-area-inset-right));
-  bottom: max(20px, env(safe-area-inset-bottom));
+  bottom: calc(max(16px, env(safe-area-inset-bottom)) + 78px); /* au-dessus du bouton WhatsApp */
   z-index: 90;
   display: grid;
   place-items: center;
@@ -2303,6 +2303,52 @@ textarea:focus {
 }
 .back-to-top.is-visible { opacity: 1; visibility: visible; transform: none; }
 .back-to-top:hover { color: #fff; transform: translateY(-3px); }
+
+/* ---------- Bouton WhatsApp flottant ---------- */
+.wa-float {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 20px 6px 6px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 16px 34px -12px rgba(6, 38, 65, .65);
+  transition: transform .25s var(--ease), box-shadow .25s;
+}
+.wa-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #fff;
+}
+.wa-icon::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 2px solid rgba(37, 211, 102, .6);
+  border-radius: 50%;
+  animation: ring 2.6s var(--ease-out) infinite;
+}
+.wa-icon .icon { width: 28px; height: 28px; }
+.wa-label {
+  display: grid;
+  font-family: var(--font-head);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+.wa-label small { font-family: var(--font-body); font-size: .78rem; font-weight: 500; color: #9DB4CA; }
+.wa-float:hover { color: #fff; transform: translateY(-3px); box-shadow: 0 20px 40px -12px rgba(6, 38, 65, .75); }
 
 /* ---------- Apparition au défilement ---------- */
 .js .reveal {
@@ -2537,6 +2583,12 @@ textarea:focus {
 
   .founder { margin-top: 32px; padding: 20px; }
   .founder p { font-size: .93rem; }
+
+  /* WhatsApp : simple pastille ronde, le bouton « haut de page » au-dessus */
+  .wa-float { padding: 0; background: none; box-shadow: none; }
+  .wa-float:hover { box-shadow: none; }
+  .wa-icon { width: 56px; height: 56px; box-shadow: 0 14px 28px -10px rgba(18, 140, 74, .8); }
+  .wa-label { display: none; }
   .hero-chip { padding: 8px 12px 8px 8px; gap: 8px; border-radius: 14px; }
   .hero-chip strong { font-size: .82rem; }
   .hero-chip small { display: none; }
@@ -2666,7 +2718,8 @@ textarea:focus {
   .footer-grid > .footer-col:last-child { grid-column: 1 / -1; }
   .footer-bottom { justify-content: center; text-align: center; padding-bottom: max(22px, env(safe-area-inset-bottom)); }
 
-  .back-to-top { width: 46px; height: 46px; right: max(14px, env(safe-area-inset-right)); bottom: max(14px, env(safe-area-inset-bottom)); }
+  /* Centré au-dessus de la pastille WhatsApp */
+  .back-to-top { width: 46px; height: 46px; right: calc(max(16px, env(safe-area-inset-right)) + 5px); bottom: calc(max(16px, env(safe-area-inset-bottom)) + 76px); }
 }
 
 /* ---------- Petits téléphones (≤ 400 px) ---------- */
