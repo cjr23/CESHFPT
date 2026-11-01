@@ -1,0 +1,12 @@
+# Fichiers d'outils locaux (non nécessaires au site)
+.claude/
+.rtk/
+CLAUDE.md
+
+# Original du logo : le site utilise assets/logo.png
+/logo.png
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
