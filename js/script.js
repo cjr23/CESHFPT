@@ -380,6 +380,25 @@
     touchStartX = null;
   });
 
+  /* ---------- Vidéos : le lecteur YouTube ne se charge qu'au clic ---------- */
+  $$('a.video-frame[data-video-id]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${link.dataset.videoId}?autoplay=1&rel=0`;
+      iframe.title = link.dataset.videoTitle;
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin'; // YouTube refuse la lecture sans référent
+      iframe.allowFullscreen = true;
+
+      const frame = document.createElement('div');
+      frame.className = 'video-frame';
+      frame.append(iframe);
+      link.replaceWith(frame);
+      iframe.focus();
+    });
+  });
+
   /* ---------- Formulaire de demande ---------- */
   const form = $('#contact-form');
   const formStatus = $('#form-status');

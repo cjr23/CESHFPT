@@ -6,7 +6,8 @@ Site statique en **HTML, CSS et JavaScript**, sans dépendance ni étape de comp
 
 ## Contenu
 
-- Présentation du centre, historique (2003 → aujourd’hui) et mot du promoteur, Abdou Karim Sané
+- Présentation du centre, historique (1992 → aujourd’hui), mot et parcours du promoteur, Abdou Karim Sané
+- Vidéos de la chaîne YouTube du centre : présentation du centre et forum des métiers (septembre 2026)
 - Les **7 formations** affichées à l’entrée du centre : Énergie solaire, Bureautique, Infographie, Réseaux informatiques, Comptabilité, Transport logistique, Marketing et communication
 - Les trois pôles (énergie solaire, hygiène & assainissement, formation professionnelle) et les services
 - Estimateur d’installation solaire
@@ -36,6 +37,7 @@ puis aller sur http://localhost:5500.
 ## Modifier le contenu
 
 - **Formations** : dans `index.html`, section `id="formations"`. Chaque formation est un bloc `<article class="formation-card">` ; la liste du formulaire se met à jour automatiquement.
+- **Vidéos** : section `id="video"` de `index.html`. Pour changer une vidéo, remplacez l’identifiant YouTube (après `watch?v=`) dans `data-video-id` et dans le lien `href`. Le lecteur ne se charge qu’au clic.
 - **Coordonnées** : téléphones, e-mail et adresse sont dans `index.html` (en-tête, contact, pied de page).
 - **Destinataires du formulaire** : constantes `WHATSAPP_NUMBER` et `CONTACT_EMAIL` en haut de `js/script.js`.
 - **Couleurs** : variables `--logo-orange`, `--logo-blue`, `--logo-sky` en haut de `css/style.css`.
