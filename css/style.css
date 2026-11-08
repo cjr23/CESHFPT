@@ -1955,13 +1955,16 @@ input[type="range"]::-moz-range-thumb {
 .lb-next { right: 20px; top: 50%; transform: translateY(-50%); }
 
 /* ---------- Réseaux sociaux ---------- */
+/* Rangées centrées : 3 cartes puis 2 sur grand écran */
 .social-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 22px;
   max-width: 1040px;
   margin: 0 auto;
 }
+.social-grid > li { flex: 1 1 280px; max-width: 330px; }
 .social-card {
   --brand: var(--blue);
   position: relative;
@@ -2012,8 +2015,22 @@ input[type="range"]::-moz-range-thumb {
   color: var(--brand-text, var(--brand));
 }
 .social-cta .icon { transition: transform .25s var(--ease); }
+.social-soon {
+  margin-top: auto;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--tint);
+  color: var(--muted);
+  font-family: var(--font-head);
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+.social-card.is-soon { box-shadow: none; }
+.social-card.is-soon .social-icon { opacity: .75; }
 
 /* Couleurs de chaque réseau (texte assez contrasté sur fond blanc) */
+.sc-whatsapp { --brand: #25D366; --brand-text: #0E7A3F; }
 .sc-instagram { --brand: #DD2A7B; --brand-text: #C13584; --brand-bg: linear-gradient(45deg, #F58529, #DD2A7B 50%, #8134AF); }
 .sc-tiktok { --brand: #111; --brand-text: var(--ink); }
 .sc-tiktok .social-icon .icon { filter: drop-shadow(1.5px 1.5px 0 #FE2C55) drop-shadow(-1.5px -1.5px 0 #25F4EE); }
@@ -2311,7 +2328,9 @@ textarea:focus {
 .site-footer .brand-logo { width: 64px; height: 64px; }
 .footer-brand p { font-size: .94rem; max-width: 38ch; margin-bottom: 20px; }
 .footer-social { display: flex; gap: 10px; margin: 0 0 22px; }
-.footer-social a {
+.footer-social { flex-wrap: wrap; }
+.footer-social a,
+.footer-social span {
   display: grid;
   place-items: center;
   width: 42px;
@@ -2324,6 +2343,7 @@ textarea:focus {
 }
 .footer-social .icon { width: 20px; height: 20px; }
 .footer-social a:hover { border-color: var(--sun); background: var(--sun); color: var(--ink); transform: translateY(-2px); }
+.footer-social .is-soon { opacity: .45; cursor: default; }
 .footer-col h4 {
   position: relative;
   margin-bottom: 20px;
@@ -2471,8 +2491,8 @@ textarea:focus {
   a.video-frame:hover img { transform: scale(1.05); }
   a.video-frame:hover::after { opacity: .6; }
   a.video-frame:hover .video-play { transform: scale(1.1); }
-  .social-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: transparent; }
-  .social-card:hover .social-cta .icon { transform: translateX(4px); }
+  a.social-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: transparent; }
+  a.social-card:hover .social-cta .icon { transform: translateX(4px); }
 }
 
 /* =========================================================
@@ -2668,6 +2688,8 @@ textarea:focus {
 
   /* Réseaux : cartes en ligne, seule la flèche reste à droite */
   .social-grid { gap: 14px; }
+  .social-grid > li { flex-basis: 100%; max-width: none; }
+  .social-soon { margin: 0 0 0 auto; }
   .social-card { flex-direction: row; align-items: center; gap: 16px; padding: 18px 18px 18px 20px; }
   .social-icon { width: 52px; height: 52px; border-radius: 15px; }
   .social-icon .icon { width: 26px; height: 26px; }
