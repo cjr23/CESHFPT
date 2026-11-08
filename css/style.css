@@ -2030,12 +2030,23 @@ input[type="range"]::-moz-range-thumb {
 .social-card.is-soon .social-icon { opacity: .75; }
 
 /* Couleurs de chaque réseau (texte assez contrasté sur fond blanc) */
+/* Logos officiels : WhatsApp, Instagram et TikTok en blanc sur la couleur de leur application,
+   YouTube et Facebook en couleur sur fond blanc, comme leurs logos de référence */
 .sc-whatsapp { --brand: #25D366; --brand-text: #0E7A3F; }
-.sc-instagram { --brand: #DD2A7B; --brand-text: #C13584; --brand-bg: linear-gradient(45deg, #F58529, #DD2A7B 50%, #8134AF); }
-.sc-tiktok { --brand: #111; --brand-text: var(--ink); }
+.sc-instagram {
+  --brand: #D6249F;
+  --brand-text: #C13584;
+  --brand-bg: radial-gradient(circle at 30% 107%, #FDF497 0%, #FDF497 5%, #FD5949 45%, #D6249F 60%, #285AEB 90%);
+}
+.sc-instagram::before { background: linear-gradient(90deg, #FEDA75, #FA7E1E, #D62976, #962FBF, #4F5BD5); }
+.sc-tiktok { --brand: #000; --brand-text: var(--ink); }
 .sc-tiktok .social-icon .icon { filter: drop-shadow(1.5px 1.5px 0 #FE2C55) drop-shadow(-1.5px -1.5px 0 #25F4EE); }
 .sc-youtube { --brand: #FF0000; --brand-text: #CC0000; }
-.sc-facebook { --brand: #1877F2; --brand-text: #1464D2; }
+.sc-facebook { --brand: #0866FF; --brand-text: #0866FF; }
+.sc-youtube .social-icon,
+.sc-facebook .social-icon { background: #fff; color: var(--brand); box-shadow: inset 0 0 0 1px var(--line), 0 12px 24px -14px var(--brand); }
+.sc-youtube .social-icon .icon,
+.sc-facebook .social-icon .icon { width: 36px; height: 36px; }
 
 /* ---------- Bandeau CTA ---------- */
 .cta-band {
@@ -2343,6 +2354,12 @@ textarea:focus {
 }
 .footer-social .icon { width: 20px; height: 20px; }
 .footer-social a:hover { border-color: var(--sun); background: var(--sun); color: var(--ink); transform: translateY(-2px); }
+/* Au survol, chaque logo prend ses couleurs officielles */
+.footer-social .fs-whatsapp:hover { border-color: #25D366; background: #25D366; color: #fff; }
+.footer-social .fs-instagram:hover { border-color: transparent; background: radial-gradient(circle at 30% 107%, #FDF497 0%, #FDF497 5%, #FD5949 45%, #D6249F 60%, #285AEB 90%); color: #fff; }
+.footer-social .fs-tiktok:hover { border-color: #000; background: #000; color: #fff; }
+.footer-social .fs-youtube:hover { border-color: #fff; background: #fff; color: #FF0000; }
+.footer-social .fs-facebook:hover { border-color: #fff; background: #fff; color: #0866FF; }
 .footer-social .is-soon { opacity: .45; cursor: default; }
 .footer-col h4 {
   position: relative;
@@ -2693,6 +2710,8 @@ textarea:focus {
   .social-card { flex-direction: row; align-items: center; gap: 16px; padding: 18px 18px 18px 20px; }
   .social-icon { width: 52px; height: 52px; border-radius: 15px; }
   .social-icon .icon { width: 26px; height: 26px; }
+  .sc-youtube .social-icon .icon,
+  .sc-facebook .social-icon .icon { width: 31px; height: 31px; }
   .social-body strong { font-size: 1.1rem; }
   .social-body small { font-size: .88rem; }
   .social-cta { margin: 0 0 0 auto; font-size: 0; gap: 0; }
