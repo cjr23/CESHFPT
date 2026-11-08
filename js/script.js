@@ -116,7 +116,7 @@
 
   /* ---------- Apparition au défilement (avec décalage dans les grilles) ---------- */
   $$('.formation-card').forEach((card) => card.classList.add('reveal'));
-  $$('.stats-grid, .formations-grid, .poles-grid, .mv-grid, .steps, .bento, .values, .timeline').forEach((grid) => {
+  $$('.stats-grid, .formations-grid, .poles-grid, .mv-grid, .steps, .bento, .values, .timeline, .social-grid').forEach((grid) => {
     [...grid.children].forEach((child, i) => child.style.setProperty('--d', `${Math.min(i, 6) * 90}ms`));
   });
 

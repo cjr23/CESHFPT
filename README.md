@@ -40,6 +40,7 @@ puis aller sur http://localhost:5500.
 ## Modifier le contenu
 
 - **Formations** : dans `index.html`, section `id="formations"`. Chaque formation est un bloc `<article class="formation-card">` ; la liste du formulaire se met à jour automatiquement.
+- **Réseaux sociaux** : section `id="reseaux"` (une carte par réseau) et icônes du pied de page (`footer-social`). Un emplacement Facebook est prêt en commentaire : remplacez `ADRESSE-DE-LA-PAGE` par le lien de la page et retirez les marques `<!--` `-->`. Ajoutez aussi le lien dans `sameAs` (données structurées en haut de la page).
 - **Vidéos** : section `id="video"` de `index.html`. Pour changer une vidéo, remplacez l’identifiant YouTube (après `watch?v=`) dans `data-video-id` et dans le lien `href`. Le lecteur ne se charge qu’au clic.
 - **Coordonnées** : téléphones, e-mail et adresse sont dans `index.html` (en-tête, contact, pied de page).
 - **Destinataires du formulaire** : constantes `WHATSAPP_NUMBER` et `CONTACT_EMAIL` en haut de `js/script.js`.

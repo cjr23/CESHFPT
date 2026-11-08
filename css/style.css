@@ -1954,6 +1954,72 @@ input[type="range"]::-moz-range-thumb {
 .lb-prev { left: 20px; top: 50%; transform: translateY(-50%); }
 .lb-next { right: 20px; top: 50%; transform: translateY(-50%); }
 
+/* ---------- Réseaux sociaux ---------- */
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+.social-card {
+  --brand: var(--blue);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  height: 100%;
+  padding: 30px 26px 24px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  color: var(--text);
+  text-decoration: none;
+  transition: transform .35s var(--ease), box-shadow .35s, border-color .35s;
+}
+.social-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: var(--brand-bg, var(--brand));
+}
+.social-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  background: var(--brand-bg, var(--brand));
+  color: #fff;
+  box-shadow: 0 12px 24px -12px var(--brand);
+}
+.social-icon .icon { width: 30px; height: 30px; }
+.social-body { display: grid; gap: 2px; }
+.social-body strong { font-family: var(--font-head); font-size: 1.25rem; color: var(--ink); }
+.social-body small { font-size: .95rem; color: var(--muted); }
+.social-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: var(--brand-text, var(--brand));
+}
+.social-cta .icon { transition: transform .25s var(--ease); }
+
+/* Couleurs de chaque réseau (texte assez contrasté sur fond blanc) */
+.sc-instagram { --brand: #DD2A7B; --brand-text: #C13584; --brand-bg: linear-gradient(45deg, #F58529, #DD2A7B 50%, #8134AF); }
+.sc-tiktok { --brand: #111; --brand-text: var(--ink); }
+.sc-tiktok .social-icon .icon { filter: drop-shadow(1.5px 1.5px 0 #FE2C55) drop-shadow(-1.5px -1.5px 0 #25F4EE); }
+.sc-youtube { --brand: #FF0000; --brand-text: #CC0000; }
+.sc-facebook { --brand: #1877F2; --brand-text: #1464D2; }
+
 /* ---------- Bandeau CTA ---------- */
 .cta-band {
   position: relative;
@@ -2244,6 +2310,20 @@ textarea:focus {
 .site-footer .brand { color: #fff; margin-bottom: 18px; }
 .site-footer .brand-logo { width: 64px; height: 64px; }
 .footer-brand p { font-size: .94rem; max-width: 38ch; margin-bottom: 20px; }
+.footer-social { display: flex; gap: 10px; margin: 0 0 22px; }
+.footer-social a {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .08);
+  color: #fff;
+  transition: background-color .2s, border-color .2s, color .2s, transform .2s var(--ease);
+}
+.footer-social .icon { width: 20px; height: 20px; }
+.footer-social a:hover { border-color: var(--sun); background: var(--sun); color: var(--ink); transform: translateY(-2px); }
 .footer-col h4 {
   position: relative;
   margin-bottom: 20px;
@@ -2274,7 +2354,7 @@ textarea:focus {
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
-  padding-block: 22px;
+  padding-block: 22px 100px; /* place libre sous le bouton WhatsApp flottant */
   border-top: 1px solid rgba(255, 255, 255, .08);
   font-size: .88rem;
 }
@@ -2391,6 +2471,8 @@ textarea:focus {
   a.video-frame:hover img { transform: scale(1.05); }
   a.video-frame:hover::after { opacity: .6; }
   a.video-frame:hover .video-play { transform: scale(1.1); }
+  .social-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: transparent; }
+  .social-card:hover .social-cta .icon { transform: translateX(4px); }
 }
 
 /* =========================================================
@@ -2584,6 +2666,16 @@ textarea:focus {
   .founder { margin-top: 32px; padding: 20px; }
   .founder p { font-size: .93rem; }
 
+  /* Réseaux : cartes en ligne, seule la flèche reste à droite */
+  .social-grid { gap: 14px; }
+  .social-card { flex-direction: row; align-items: center; gap: 16px; padding: 18px 18px 18px 20px; }
+  .social-icon { width: 52px; height: 52px; border-radius: 15px; }
+  .social-icon .icon { width: 26px; height: 26px; }
+  .social-body strong { font-size: 1.1rem; }
+  .social-body small { font-size: .88rem; }
+  .social-cta { margin: 0 0 0 auto; font-size: 0; gap: 0; }
+  .social-cta .icon { width: 22px; height: 22px; }
+
   /* WhatsApp : simple pastille ronde, le bouton « haut de page » au-dessus */
   .wa-float { padding: 0; background: none; box-shadow: none; }
   .wa-float:hover { box-shadow: none; }
@@ -2716,7 +2808,7 @@ textarea:focus {
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
   .footer-brand,
   .footer-grid > .footer-col:last-child { grid-column: 1 / -1; }
-  .footer-bottom { justify-content: center; text-align: center; padding-bottom: max(22px, env(safe-area-inset-bottom)); }
+  .footer-bottom { justify-content: center; text-align: center; padding-bottom: calc(max(16px, env(safe-area-inset-bottom)) + 76px); }
 
   /* Centré au-dessus de la pastille WhatsApp */
   .back-to-top { width: 46px; height: 46px; right: calc(max(16px, env(safe-area-inset-right)) + 5px); bottom: calc(max(16px, env(safe-area-inset-bottom)) + 76px); }
